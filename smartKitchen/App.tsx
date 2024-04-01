@@ -1,10 +1,13 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Platform } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Platform, StatusBar, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'
+
+const alturaStatusBar = StatusBar.currentHeight
 
 export default function App() {
 
   return (
     <View style={ESTILOS.container}>
+      <StatusBar barStyle="dark-content" translucent={true} backgroundColor="#F1F1F1" />
       <Text style={ESTILOS.header}>Cozinha fácil</Text>
       <View style={ESTILOS.form}>
         <Text style={ESTILOS.label}>Insira os ingredientes abaixo:</Text>
@@ -47,7 +50,7 @@ const ESTILOS = StyleSheet.create({
   header: {
     fontSize: 32,
     fontWeight: 'bold',
-    paddingTop: 34
+    paddingTop: Platform.OS === 'android' ? alturaStatusBar : 54
   },
   form: {
     backgroundColor: '#FFF',

@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Platform, StatusBar, ScrollView } from 'react-native';
+import { useState } from "react";
 import { MaterialIcons } from '@expo/vector-icons'
 
 const alturaStatusBar = StatusBar.currentHeight
@@ -7,6 +8,7 @@ export default function App() {
 
   return (
     <View style={ESTILOS.container}>
+
       <StatusBar barStyle="dark-content" translucent={true} backgroundColor="#F1F1F1" />
       <Text style={ESTILOS.header}>Cozinha fácil</Text>
       <View style={ESTILOS.form}>
@@ -36,6 +38,16 @@ export default function App() {
         <Text style={ESTILOS.buttonText}>Gerar receita</Text>
         <MaterialIcons name="travel-explore" size={24} color="#FFF" />
       </TouchableOpacity>
+
+      <ScrollView style={ESTILOS.containerScroll} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 24, marginTop: 4, }}>
+        <View style={ESTILOS.content}>
+          <Text style={ESTILOS.title}>Produzindo receita...</Text>
+        </View>
+
+        <View style={ESTILOS.content}>
+          <Text style={ESTILOS.title}>Sua receita 👇</Text>
+        </View>
+      </ScrollView>;
     </View>
   );
 }
@@ -87,6 +99,23 @@ const ESTILOS = StyleSheet.create({
     fontSize: 18,
     color: '#FFF',
     fontWeight: 'bold'
+  },
+  content: {
+    backgroundColor: '#FFF',
+    padding: 16,
+    width: '100%',
+    marginTop: 16,
+    borderRadius: 8,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 14
+  },
+  containerScroll: {
+    width: '90%',
+    marginTop: 8,
   }
 
 })

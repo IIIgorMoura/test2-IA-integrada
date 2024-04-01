@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Platform, StatusBar, ScrollView, ActivityIndicator, Alert, Keyboard } from 'react-native';  
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Platform, StatusBar, ScrollView, ActivityIndicator, Alert, Keyboard } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState } from 'react'
 
 
 const alturaStatusBar = StatusBar.currentHeight
-
+const KEY_GPT = 'SUA_CHAVE';
 
 export default function App() {
 
@@ -25,6 +25,42 @@ export default function App() {
     defReceita("");
     defLoad(true);
     Keyboard.dismiss();
+
+    const prompt = `Sugira uma receita para o ${ocasiao} usando os ingredientes: ${ingr1}, ${ingr2}, ${ingr3} e ${ingr4} e pesquise a receita no YouTube. Caso encontre, informe o link.`;
+
+
+
+    fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${KEY_GPT}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "user",
+            content: prompt,
+          },
+        ],
+        temperature: 0.2,
+        max_tokens: 500,
+        top_p: 1,
+      })
+    })
+
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data.choices[0].message.content);
+      defReceita(data.choices[0].message.content)
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      defLoad(false);
+    })
   }
 
   return (

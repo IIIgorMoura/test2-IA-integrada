@@ -1,14 +1,34 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Platform, StatusBar, ScrollView } from 'react-native';
-import { useState } from "react";
-import { MaterialIcons } from '@expo/vector-icons'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Platform, StatusBar, ScrollView, ActivityIndicator, Alert, Keyboard } from 'react-native';  
+import { MaterialIcons } from '@expo/vector-icons';
+import { useState } from 'react'
+
 
 const alturaStatusBar = StatusBar.currentHeight
 
+
 export default function App() {
+
+  const [load, defLoad] = useState(false);
+  const [receita, defReceita] = useState("");
+
+  const [ingr1, defIngr1] = useState("");
+  const [ingr2, defIngr2] = useState("");
+  const [ingr3, defIngr3] = useState("");
+  const [ingr4, defIngr4] = useState("");
+  const [ocasiao, defOcasiao] = useState("");
+
+  async function gerarReceita() {
+    if (ingr1 === "" || ingr2 === "" || ingr3 === "" || ingr4 === "" || ocasiao === "") {
+      Alert.alert("Atenção", "Informe todos os ingredientes!", [{ text: "Beleza!" }])
+      return;
+    }
+    defReceita("");
+    defLoad(true);
+    Keyboard.dismiss();
+  }
 
   return (
     <View style={ESTILOS.container}>
-
       <StatusBar barStyle="dark-content" translucent={true} backgroundColor="#F1F1F1" />
       <Text style={ESTILOS.header}>Cozinha fácil</Text>
       <View style={ESTILOS.form}>
@@ -16,38 +36,55 @@ export default function App() {
         <TextInput
           placeholder="Ingrediente 1"
           style={ESTILOS.input}
+          value={ingr1}
+          onChangeText={(texto) => defIngr1(texto)}
         />
         <TextInput
           placeholder="Ingrediente 2"
           style={ESTILOS.input}
+          value={ingr2}
+          onChangeText={(texto) => defIngr2(texto)}
         />
         <TextInput
           placeholder="Ingrediente 3"
           style={ESTILOS.input}
+          value={ingr3}
+          onChangeText={(texto) => defIngr3(texto)}
         />
         <TextInput
           placeholder="Ingrediente 4"
           style={ESTILOS.input}
+          value={ingr4}
+          onChangeText={(texto) => defIngr4(texto)}
         />
         <TextInput
-          placeholder="Almoço ou jantar"
+          placeholder="Almoço ou Jantar"
           style={ESTILOS.input}
+          value={ocasiao}
+          onChangeText={(texto) => defOcasiao(texto)}
         />
       </View>
-      <TouchableOpacity style={ESTILOS.button}>
+
+      <TouchableOpacity style={ESTILOS.button} onPress={gerarReceita}>
         <Text style={ESTILOS.buttonText}>Gerar receita</Text>
         <MaterialIcons name="travel-explore" size={24} color="#FFF" />
       </TouchableOpacity>
 
-      <ScrollView style={ESTILOS.containerScroll} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 24, marginTop: 4, }}>
-        <View style={ESTILOS.content}>
-          <Text style={ESTILOS.title}>Produzindo receita...</Text>
-        </View>
+      <ScrollView contentContainerStyle={{ paddingBottom: 24, marginTop: 4, }} style={ESTILOS.containerScroll} showsVerticalScrollIndicator={false} >
+        {load && (
+          <View style={ESTILOS.content}>
+            <Text style={ESTILOS.title}>Produzindo receita...</Text>
+            <ActivityIndicator color="#000" size="large" />
+          </View>
+        )}
 
-        <View style={ESTILOS.content}>
-          <Text style={ESTILOS.title}>Sua receita 👇</Text>
-        </View>
-      </ScrollView>;
+        {receita && (
+          <View style={ESTILOS.content}>
+            <Text style={ESTILOS.title}>Sua receita 👇</Text>
+          </View>
+        )}
+      </ScrollView>
+
     </View>
   );
 }

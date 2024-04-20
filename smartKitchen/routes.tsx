@@ -12,7 +12,15 @@ const Tab = createBottomTabNavigator();
 
 export function Routes() {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator
+            screenOptions={{
+                tabBarStyle: { 
+                    backgroundColor: "#000",
+                    borderTopWidth: 2, // Adiciona a borda superior
+                    borderTopColor: 'red', // Define a cor da borda superior
+                },
+            }}
+        >
             <Tab.Screen
                 name="home"
                 component={Home}
@@ -21,9 +29,9 @@ export function Routes() {
                     headerShown: false,
                     tabBarIcon: ({ focused }) => {
                         if (focused) {
-                            return (<Ionicons size={25} color={"#000"} name="home" />)
+                            return (<Ionicons size={25} color={"#fff"} name="home" />)
                         }
-                        return (<Ionicons size={20} color={"#000"} name="home-outline" />)
+                        return (<Ionicons size={20} color={"#fff"} name="home-outline" />)
                     }
                 }}
             />
@@ -35,9 +43,9 @@ export function Routes() {
                     headerShown: false,
                     tabBarIcon: ({ focused }) => {
                         if (focused) {
-                            return (<Ionicons size={25} color={"#000"} name="lock-closed" />)
+                            return (<Ionicons size={25} color={"#fff"} name="car-sport" />)
                         }
-                        return (<Ionicons size={20} color={"#000"} name="lock-closed-outline" />)
+                        return (<Ionicons size={20} color={"#fff"} name="car-sport-outline" />)
                     }
                 }}
             />
@@ -49,9 +57,9 @@ export function Routes() {
                     headerShown: false,
                     tabBarIcon: ({ focused }) => {
                         if (focused) {
-                            return (<Ionicons size={25} color={"#000"} name="lock-closed" />)
+                            return (<Ionicons size={25} color={"#fff"} name="musical-notes" />)
                         }
-                        return (<Ionicons size={20} color={"#000"} name="lock-closed-outline" />)
+                        return (<Ionicons size={20} color={"#fff"} name="musical-notes-outline" />)
                     }
                 }}
             />
@@ -63,9 +71,9 @@ export function Routes() {
                     headerShown: false,
                     tabBarIcon: ({ focused }) => {
                         if (focused) {
-                            return (<Ionicons size={25} color={"#000"} name="lock-closed" />)
+                            return (<Ionicons size={25} color={"#fff"} name="book" />)
                         }
-                        return (<Ionicons size={20} color={"#000"} name="lock-closed-outline" />)
+                        return (<Ionicons size={20} color={"#fff"} name="book-outline" />)
                     }
                 }}
             />
@@ -77,9 +85,9 @@ export function Routes() {
                     headerShown: false,
                     tabBarIcon: ({ focused }) => {
                         if (focused) {
-                            return (<Ionicons size={25} color={"#000"} name="lock-closed" />)
+                            return (<Ionicons size={25} color={"#fff"} name="earth" />)
                         }
-                        return (<Ionicons size={20} color={"#000"} name="lock-closed-outline" />)
+                        return (<Ionicons size={20} color={"#fff"} name="earth-outline" />)
                     }
                 }}
             />

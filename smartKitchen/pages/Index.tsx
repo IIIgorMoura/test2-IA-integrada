@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Platform, StatusBar, ScrollView, ActivityIndicator, Alert, Keyboard } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useState } from 'react'
+import { useState } from 'react';
 
 
 const alturaStatusBar = StatusBar.currentHeight

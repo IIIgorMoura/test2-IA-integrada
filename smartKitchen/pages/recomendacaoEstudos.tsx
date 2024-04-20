@@ -66,9 +66,9 @@ export function RecomendacaoEstudos() {
   return (
     <View style={ESTILOS.container}>
       <StatusBar barStyle="dark-content" translucent={true} backgroundColor="#F1F1F1" />
-      <Text style={ESTILOS.header}>Cozinha fácil</Text>
+      <Text style={ESTILOS.header}>Study Smart</Text>
       <View style={ESTILOS.form}>
-        <Text style={ESTILOS.label}>RecomendacaoEstudos:</Text>
+        <Text style={ESTILOS.label}>Descreva como você pretende estudar:</Text>
         <TextInput
           placeholder="Ingrediente 1"
           style={ESTILOS.input}
@@ -102,14 +102,14 @@ export function RecomendacaoEstudos() {
       </View>
 
       <TouchableOpacity style={ESTILOS.button} onPress={gerarReceita}>
-        <Text style={ESTILOS.buttonText}>Gerar receita</Text>
+        <Text style={ESTILOS.buttonText}>Gerar plano de estudos</Text>
         <MaterialIcons name="travel-explore" size={24} color="#FFF" />
       </TouchableOpacity>
 
       <ScrollView contentContainerStyle={{ paddingBottom: 24, marginTop: 4, }} style={ESTILOS.containerScroll} showsVerticalScrollIndicator={false} >
         {load && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Produzindo receita...</Text>
+            <Text style={ESTILOS.title}>Produzindo plano de estudos...</Text>
             <ActivityIndicator color="#000" size="large" />
           </View>
         )}

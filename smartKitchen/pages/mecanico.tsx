@@ -66,9 +66,9 @@ export function Mecanico() {
   return (
     <View style={ESTILOS.container}>
       <StatusBar barStyle="dark-content" translucent={true} backgroundColor="#F1F1F1" />
-      <Text style={ESTILOS.header}>Cozinha fácil</Text>
+      <Text style={ESTILOS.header}>Diagnóstico Automotivo</Text>
       <View style={ESTILOS.form}>
-        <Text style={ESTILOS.label}>test:</Text>
+        <Text style={ESTILOS.label}>Descreva o problema do seu veículo:</Text>
         <TextInput
           placeholder="Ingrediente 1"
           style={ESTILOS.input}
@@ -102,14 +102,14 @@ export function Mecanico() {
       </View>
 
       <TouchableOpacity style={ESTILOS.button} onPress={gerarReceita}>
-        <Text style={ESTILOS.buttonText}>Gerar receita</Text>
+        <Text style={ESTILOS.buttonText}>Encontrar diagnóstico</Text>
         <MaterialIcons name="travel-explore" size={24} color="#FFF" />
       </TouchableOpacity>
 
       <ScrollView contentContainerStyle={{ paddingBottom: 24, marginTop: 4, }} style={ESTILOS.containerScroll} showsVerticalScrollIndicator={false} >
         {load && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Produzindo receita...</Text>
+            <Text style={ESTILOS.title}>Analizando diagnósticos...</Text>
             <ActivityIndicator color="#000" size="large" />
           </View>
         )}

@@ -68,6 +68,8 @@ export function RecomendacaoEstudos() {
   return (
     <View style={ESTILOS.container}>
       <StatusBar barStyle="dark-content" translucent={true} backgroundColor="#F1F1F1" />
+
+      <img style={ESTILOS.imgHeader} src="../assets/IA-logo.png"/>
       <Text style={ESTILOS.header}>Study Smart</Text>
       <View style={ESTILOS.form}>
         <Text style={ESTILOS.label}>Descreva como você pretende estudar:</Text>

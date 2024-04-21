@@ -8,6 +8,9 @@ const ESTILOS = StyleSheet.create({
         backgroundColor: '#1e1e1e',
         alignItems: 'center',
     },
+    imgHeader: {
+      margin: 20,
+    },
     containerBotoes: {
         flex: 1,
         width: '90%',
@@ -18,7 +21,7 @@ const ESTILOS = StyleSheet.create({
         fontSize: 32,
         color: '#fff',
         fontWeight: 'bold',
-        paddingTop: Platform.OS === 'android' ? alturaStatusBar : 54
+        paddingTop: Platform.OS === 'android' ? alturaStatusBar : 2
     },
     button: {
         backgroundColor: '#FF5656',

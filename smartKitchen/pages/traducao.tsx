@@ -67,6 +67,8 @@ export function Traducao() {
   return (
     <View style={ESTILOS.container}>
       <StatusBar barStyle="dark-content" translucent={true} backgroundColor="#F1F1F1" />
+
+      <img style={ESTILOS.imgHeader} src="../assets/IA-logo.png"/>
       <Text style={ESTILOS.header}>Translate AI</Text>
       <View style={ESTILOS.form}>
         <Text style={ESTILOS.label}>Insira o que você deseja traduzir:</Text>

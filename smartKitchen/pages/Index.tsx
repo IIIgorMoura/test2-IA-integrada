@@ -18,6 +18,7 @@ export function Home() {
   return (
     <View style={ESTILOS.container}>
       <StatusBar barStyle="dark-content" translucent={true} backgroundColor="#F1F1F1" />
+      <img style={ESTILOS.imgHeader} src="../assets/IA-logo.png"/>
       <Text style={ESTILOS.header}>Smart AI</Text>
 
 
@@ -28,7 +29,7 @@ export function Home() {
           style={[ESTILOS.button, { height: alturaTela * 0.1 }]}
           onPress={() => navigation.navigate('Mecanico')}
         >
-          <Text style={ESTILOS.buttonText}>Problemas no carro</Text>
+          <Text style={ESTILOS.buttonText}>Encontrar problemas no carro</Text>
           <MaterialIcons name="travel-explore" size={24} color="#FFF" />
         </TouchableOpacity>
 

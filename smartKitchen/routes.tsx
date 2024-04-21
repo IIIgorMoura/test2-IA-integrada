@@ -16,13 +16,13 @@ export function Routes() {
             screenOptions={{
                 tabBarStyle: { 
                     backgroundColor: "#000",
-                    borderTopWidth: 2, // Adiciona a borda superior
-                    borderTopColor: 'red', // Define a cor da borda superior
+                    borderTopWidth: 2,
+                    borderTopColor: 'red',
                 },
             }}
         >
             <Tab.Screen
-                name="home"
+                name="Página Inicial"
                 component={Home}
                 options={{
                     tabBarShowLabel: false,
@@ -36,7 +36,7 @@ export function Routes() {
                 }}
             />
             <Tab.Screen
-                name="mecanico"
+                name="Mecânica IA"
                 component={Mecanico}
                 options={{
                     tabBarShowLabel: false,
@@ -50,7 +50,7 @@ export function Routes() {
                 }}
             />
             <Tab.Screen
-                name="musica"
+                name="Gerador de Música"
                 component={Musica}
                 options={{
                     tabBarShowLabel: false,
@@ -64,7 +64,7 @@ export function Routes() {
                 }}
             />
             <Tab.Screen
-                name="recomendacaoEstudos"
+                name="Planejador de Estudos"
                 component={RecomendacaoEstudos}
                 options={{
                     tabBarShowLabel: false,
@@ -78,7 +78,7 @@ export function Routes() {
                 }}
             />
             <Tab.Screen
-                name="tradutor"
+                name="Tradutor de Textos"
                 component={Traducao}
                 options={{
                     tabBarShowLabel: false,

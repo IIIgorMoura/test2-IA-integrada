@@ -1,9 +1,13 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Platform, StatusBar, ScrollView, ActivityIndicator, Alert, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Dimensions, StatusBar, ScrollView, ActivityIndicator, Alert, Keyboard } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useState } from 'react'
+import { useState } from 'react';
+
+import ESTILOS from '../styles';
 
 
-const alturaStatusBar = StatusBar.currentHeight
+const alturaStatusBar = StatusBar.currentHeight;
+const alturaTela = Dimensions.get('window').height;
+
 const KEY_GPT = 'SUA_CHAVE';
 
 export function Musica() {
@@ -101,7 +105,7 @@ export function Musica() {
         />
       </View>
 
-      <TouchableOpacity style={ESTILOS.button} onPress={gerarReceita}>
+      <TouchableOpacity style={[ESTILOS.button, { height: alturaTela * 0.1 }]} onPress={gerarReceita}>
         <Text style={ESTILOS.buttonText}>Gerar música</Text>
         <MaterialIcons name="travel-explore" size={24} color="#FFF" />
       </TouchableOpacity>
@@ -124,71 +128,3 @@ export function Musica() {
     </View>
   );
 }
-
-const ESTILOS = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f1f1f1',
-    alignItems: 'center',
-    paddingTop: 20,
-  },
-  header: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    paddingTop: Platform.OS === 'android' ? alturaStatusBar : 54
-  },
-  form: {
-    backgroundColor: '#FFF',
-    width: '90%',
-    borderRadius: 8,
-    padding: 16,
-    marginTop: 16,
-    marginBottom: 8,
-  },
-  label: {
-    fontWeight: 'bold',
-    fontSize: 18,
-    marginBottom: 8,
-  },
-  input: {
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: '#94a3b8',
-    padding: 8,
-    fontSize: 16,
-    marginBottom: 16,
-  },
-  button: {
-    backgroundColor: '#FF5656',
-    width: '90%',
-    borderRadius: 8,
-    flexDirection: 'row',
-    padding: 14,
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 8,
-  },
-  buttonText: {
-    fontSize: 18,
-    color: '#FFF',
-    fontWeight: 'bold'
-  },
-  content: {
-    backgroundColor: '#FFF',
-    padding: 16,
-    width: '100%',
-    marginTop: 16,
-    borderRadius: 8,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 14
-  },
-  containerScroll: {
-    width: '90%',
-    marginTop: 8,
-  }
-
-})

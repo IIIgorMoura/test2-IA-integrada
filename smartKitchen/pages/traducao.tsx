@@ -13,7 +13,7 @@ const KEY_GPT = 'SUA_CHAVE';
 export function Traducao() {
 
   const [load, defLoad] = useState(false);
-  const [receita, defTraducao] = useState("");
+  const [traducao, defTraducao] = useState("");
 
   const [text, defText] = useState("");
   const [lingua, defLingua] = useState("");
@@ -97,7 +97,7 @@ export function Traducao() {
           </View>
         )}
 
-        {receita && (
+        {traducao && (
           <View style={ESTILOS.content}>
             <Text style={ESTILOS.title}>Sua receita 👇</Text>
           </View>

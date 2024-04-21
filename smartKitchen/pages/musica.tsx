@@ -13,24 +13,22 @@ const KEY_GPT = 'SUA_CHAVE';
 export function Musica() {
 
   const [load, defLoad] = useState(false);
-  const [receita, defReceita] = useState("");
+  const [musica, defMusica] = useState("");
 
-  const [ingr1, defIngr1] = useState("");
-  const [ingr2, defIngr2] = useState("");
-  const [ingr3, defIngr3] = useState("");
-  const [ingr4, defIngr4] = useState("");
-  const [ocasiao, defOcasiao] = useState("");
+  const [estiloMusica, defEstiloMusica] = useState("");
+  const [numeroEstrofes, defNumeroEstrofes] = useState("");
+  const [tema, defTema] = useState("");
 
-  async function gerarReceita() {
-    if (ingr1 === "" || ingr2 === "" || ingr3 === "" || ingr4 === "" || ocasiao === "") {
+  async function gerarMusica() {
+    if (estiloMusica === "" || numeroEstrofes === "" || tema === "") {
       Alert.alert("Atenção", "Informe todos os ingredientes!", [{ text: "Beleza!" }])
       return;
     }
-    defReceita("");
+    defMusica("");
     defLoad(true);
     Keyboard.dismiss();
 
-    const prompt = `Sugira uma receita para o ${ocasiao} usando os ingredientes: ${ingr1}, ${ingr2}, ${ingr3} e ${ingr4} e pesquise a receita no YouTube. Caso encontre, informe o link.`;
+    const prompt = `Crie uma música do estilo ${estiloMusica}, com ${numeroEstrofes} estrofes sobre o tema ${tema}`;
 
 
 
@@ -57,7 +55,7 @@ export function Musica() {
     .then(response => response.json())
     .then((data) => {
       console.log(data.choices[0].message.content);
-      defReceita(data.choices[0].message.content)
+      defMusica(data.choices[0].message.content)
     })
     .catch((error) => {
       console.log(error);
@@ -74,38 +72,26 @@ export function Musica() {
       <View style={ESTILOS.form}>
         <Text style={ESTILOS.label}>Descreva as características da música:</Text>
         <TextInput
-          placeholder="Ingrediente 1"
+          placeholder="Estilo Musical"
           style={ESTILOS.input}
-          value={ingr1}
-          onChangeText={(texto) => defIngr1(texto)}
+          value={estiloMusica}
+          onChangeText={(texto) => defEstiloMusica(texto)}
         />
         <TextInput
-          placeholder="Ingrediente 2"
+          placeholder="Número de estrofes da Música"
           style={ESTILOS.input}
-          value={ingr2}
-          onChangeText={(texto) => defIngr2(texto)}
+          value={numeroEstrofes}
+          onChangeText={(texto) => defNumeroEstrofes(texto)}
         />
         <TextInput
-          placeholder="Ingrediente 3"
+          placeholder="Tema da Música"
           style={ESTILOS.input}
-          value={ingr3}
-          onChangeText={(texto) => defIngr3(texto)}
-        />
-        <TextInput
-          placeholder="Ingrediente 4"
-          style={ESTILOS.input}
-          value={ingr4}
-          onChangeText={(texto) => defIngr4(texto)}
-        />
-        <TextInput
-          placeholder="Almoço ou Jantar"
-          style={ESTILOS.input}
-          value={ocasiao}
-          onChangeText={(texto) => defOcasiao(texto)}
+          value={tema}
+          onChangeText={(texto) => defTema(texto)}
         />
       </View>
 
-      <TouchableOpacity style={[ESTILOS.button, { height: alturaTela * 0.1 }]} onPress={gerarReceita}>
+      <TouchableOpacity style={[ESTILOS.button, { height: alturaTela * 0.1 }]} onPress={gerarMusica}>
         <Text style={ESTILOS.buttonText}>Gerar música</Text>
         <MaterialIcons name="travel-explore" size={24} color="#FFF" />
       </TouchableOpacity>
@@ -118,9 +104,9 @@ export function Musica() {
           </View>
         )}
 
-        {receita && (
+        {musica && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Sua receita 👇</Text>
+            <Text style={ESTILOS.title}>Sua música 👇</Text>
           </View>
         )}
       </ScrollView>

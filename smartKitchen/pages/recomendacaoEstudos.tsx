@@ -13,24 +13,22 @@ const KEY_GPT = 'SUA_CHAVE';
 export function RecomendacaoEstudos() {
 
   const [load, defLoad] = useState(false);
-  const [receita, defReceita] = useState("");
+  const [planoEstudos, defPlanoEstudos] = useState("");
 
-  const [ingr1, defIngr1] = useState("");
-  const [ingr2, defIngr2] = useState("");
-  const [ingr3, defIngr3] = useState("");
-  const [ingr4, defIngr4] = useState("");
-  const [ocasiao, defOcasiao] = useState("");
+  const [conteudo, defConteudo] = useState("");
+  const [materia, defMateria] = useState("");
+  const [tempo, defTempo] = useState("");
 
-  async function gerarReceita() {
-    if (ingr1 === "" || ingr2 === "" || ingr3 === "" || ingr4 === "" || ocasiao === "") {
+  async function gerarPlanoEstudos() {
+    if (conteudo === "" || materia === "" || tempo === "") {
       Alert.alert("Atenção", "Informe todos os ingredientes!", [{ text: "Beleza!" }])
       return;
     }
-    defReceita("");
+    defPlanoEstudos("");
     defLoad(true);
     Keyboard.dismiss();
 
-    const prompt = `Sugira uma receita para o ${ocasiao} usando os ingredientes: ${ingr1}, ${ingr2}, ${ingr3} e ${ingr4} e pesquise a receita no YouTube. Caso encontre, informe o link.`;
+    const prompt = `Elabore um plano de estudos sobre o conteúdo ${conteudo}, na matéria ${materia} enm um período de ${tempo}`;
 
 
 
@@ -57,7 +55,7 @@ export function RecomendacaoEstudos() {
     .then(response => response.json())
     .then((data) => {
       console.log(data.choices[0].message.content);
-      defReceita(data.choices[0].message.content)
+      defPlanoEstudos(data.choices[0].message.content)
     })
     .catch((error) => {
       console.log(error);
@@ -74,38 +72,26 @@ export function RecomendacaoEstudos() {
       <View style={ESTILOS.form}>
         <Text style={ESTILOS.label}>Descreva como você pretende estudar:</Text>
         <TextInput
-          placeholder="Ingrediente 1"
+          placeholder="Conteúdo à ser Estudado"
           style={ESTILOS.input}
-          value={ingr1}
-          onChangeText={(texto) => defIngr1(texto)}
+          value={conteudo}
+          onChangeText={(texto) => defConteudo(texto)}
         />
         <TextInput
-          placeholder="Ingrediente 2"
+          placeholder="Matéria EX: (Matemática, Inglês...)"
           style={ESTILOS.input}
-          value={ingr2}
-          onChangeText={(texto) => defIngr2(texto)}
+          value={materia}
+          onChangeText={(texto) => defMateria(texto)}
         />
         <TextInput
-          placeholder="Ingrediente 3"
+          placeholder="Tempo de Estudos EX: (6, 24...) Meses"
           style={ESTILOS.input}
-          value={ingr3}
-          onChangeText={(texto) => defIngr3(texto)}
-        />
-        <TextInput
-          placeholder="Ingrediente 4"
-          style={ESTILOS.input}
-          value={ingr4}
-          onChangeText={(texto) => defIngr4(texto)}
-        />
-        <TextInput
-          placeholder="Almoço ou Jantar"
-          style={ESTILOS.input}
-          value={ocasiao}
-          onChangeText={(texto) => defOcasiao(texto)}
+          value={tempo}
+          onChangeText={(texto) => defTempo(texto)}
         />
       </View>
 
-      <TouchableOpacity style={[ESTILOS.button, { height: alturaTela * 0.1 }]} onPress={gerarReceita}>
+      <TouchableOpacity style={[ESTILOS.button, { height: alturaTela * 0.1 }]} onPress={gerarPlanoEstudos}>
         <Text style={ESTILOS.buttonText}>Gerar plano de estudos</Text>
         <MaterialIcons name="travel-explore" size={24} color="#FFF" />
       </TouchableOpacity>
@@ -118,9 +104,9 @@ export function RecomendacaoEstudos() {
           </View>
         )}
 
-        {receita && (
+        {planoEstudos && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Sua receita 👇</Text>
+            <Text style={ESTILOS.title}>Seu Plano de Estudos 👇</Text>
           </View>
         )}
       </ScrollView>

@@ -13,24 +13,21 @@ const KEY_GPT = 'SUA_CHAVE';
 export function Mecanico() {
 
   const [load, defLoad] = useState(false);
-  const [receita, defReceita] = useState("");
+  const [diagnostico, defDiagnostico] = useState("");
 
-  const [ingr1, defIngr1] = useState("");
-  const [ingr2, defIngr2] = useState("");
-  const [ingr3, defIngr3] = useState("");
-  const [ingr4, defIngr4] = useState("");
-  const [ocasiao, defOcasiao] = useState("");
+  const [carro, defCarro] = useState("");
+  const [problemaCarro, defProblemaCarro] = useState("");
 
-  async function gerarReceita() {
-    if (ingr1 === "" || ingr2 === "" || ingr3 === "" || ingr4 === "" || ocasiao === "") {
+  async function gerarDiagnostico() {
+    if (carro === "" || problemaCarro === "") {
       Alert.alert("Atenção", "Informe todos os ingredientes!", [{ text: "Beleza!" }])
       return;
     }
-    defReceita("");
+    defDiagnostico("");
     defLoad(true);
     Keyboard.dismiss();
 
-    const prompt = `Sugira uma receita para o ${ocasiao} usando os ingredientes: ${ingr1}, ${ingr2}, ${ingr3} e ${ingr4} e pesquise a receita no YouTube. Caso encontre, informe o link.`;
+    const prompt = `Dê o diagnóstico de qual pode ser o problema ${problemaCarro}. No veículo ${carro}`;
 
 
 
@@ -57,7 +54,7 @@ export function Mecanico() {
     .then(response => response.json())
     .then((data) => {
       console.log(data.choices[0].message.content);
-      defReceita(data.choices[0].message.content)
+      defDiagnostico(data.choices[0].message.content)
     })
     .catch((error) => {
       console.log(error);
@@ -74,38 +71,20 @@ export function Mecanico() {
       <View style={ESTILOS.form}>
         <Text style={ESTILOS.label}>Descreva o problema do seu veículo:</Text>
         <TextInput
-          placeholder="Ingrediente 1"
+          placeholder="Informações do Veículo"
           style={ESTILOS.input}
-          value={ingr1}
-          onChangeText={(texto) => defIngr1(texto)}
+          value={carro}
+          onChangeText={(texto) => defCarro(texto)}
         />
         <TextInput
-          placeholder="Ingrediente 2"
+          placeholder="Problema Percebido no Veículo"
           style={ESTILOS.input}
-          value={ingr2}
-          onChangeText={(texto) => defIngr2(texto)}
-        />
-        <TextInput
-          placeholder="Ingrediente 3"
-          style={ESTILOS.input}
-          value={ingr3}
-          onChangeText={(texto) => defIngr3(texto)}
-        />
-        <TextInput
-          placeholder="Ingrediente 4"
-          style={ESTILOS.input}
-          value={ingr4}
-          onChangeText={(texto) => defIngr4(texto)}
-        />
-        <TextInput
-          placeholder="Almoço ou Jantar"
-          style={ESTILOS.input}
-          value={ocasiao}
-          onChangeText={(texto) => defOcasiao(texto)}
+          value={problemaCarro}
+          onChangeText={(texto) => defProblemaCarro(texto)}
         />
       </View>
 
-      <TouchableOpacity style={[ESTILOS.button, { height: alturaTela * 0.1 }]} onPress={gerarReceita}>
+      <TouchableOpacity style={[ESTILOS.button, { height: alturaTela * 0.1 }]} onPress={gerarDiagnostico}>
         <Text style={ESTILOS.buttonText}>Encontrar diagnóstico</Text>
         <MaterialIcons name="travel-explore" size={24} color="#FFF" />
       </TouchableOpacity>
@@ -118,9 +97,9 @@ export function Mecanico() {
           </View>
         )}
 
-        {receita && (
+        {diagnostico && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Sua receita 👇</Text>
+            <Text style={ESTILOS.title}>Diagnóstico do problema no Veículo</Text>
           </View>
         )}
       </ScrollView>

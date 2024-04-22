@@ -1,13 +1,16 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StatusBar, Dimensions, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons/';
 import ESTILOS from '../styles';
 
-import { Mecanico } from './mecanico';
-import { Musica } from './musica'
-import { RecomendacaoEstudos } from './recomendacaoEstudos'
-import { Traducao } from './traducao'
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+// import { Mecanico } from './mecanico';
+// import { Musica } from './musica';
+// import { RecomendacaoEstudos }  from './recomendacaoEstudos';
+// import { Traducao } from './traducao';
 
 const alturaTela = Dimensions.get('window').height;
 
@@ -25,10 +28,10 @@ export function Home() {
         
         <TouchableOpacity
           style={[ESTILOS.button, { height: alturaTela * 0.1 }]}
-          onPress={() => navigation.navigate('Mecanico')}
+          onPress={() => navigation.navigate('Mecanica')}
         >
           <Text style={ESTILOS.buttonText}>Encontrar problemas no carro</Text>
-          <MaterialIcons name="travel-explore" size={24} color="#FFF" />
+          <Ionicons size={30} color={"#fff"} name="car-sport-outline" />
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -36,23 +39,23 @@ export function Home() {
           onPress={() => navigation.navigate('Musica')}
         >
           <Text style={ESTILOS.buttonText}>Criar música</Text>
-          <MaterialIcons name="travel-explore" size={24} color="#FFF" />
+          <Ionicons size={30} color={"#fff"} name="musical-notes-outline" />
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[ESTILOS.button, { height: alturaTela * 0.1 }]}
-          onPress={() => navigation.navigate('RecomendacaoEstudos')}
+          onPress={() => navigation.navigate('Planejador de Estudos')}
         >
           <Text style={ESTILOS.buttonText}>Criar plano de estudos</Text>
-          <MaterialIcons name="travel-explore" size={24} color="#FFF" />
+          <Ionicons size={30} color={"#fff"} name="book-outline" />
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[ESTILOS.button, { height: alturaTela * 0.1 }]}
-          onPress={() => navigation.navigate('Traducao')}
+          onPress={() => navigation.navigate('Tradutor de Textos')}
         >
           <Text style={ESTILOS.buttonText}>Traduzir texto</Text>
-          <MaterialIcons name="travel-explore" size={24} color="#FFF" />
+          <Ionicons size={30} color={"#fff"} name="earth-outline" />
         </TouchableOpacity>
       </View>
     </View>

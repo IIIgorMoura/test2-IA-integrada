@@ -36,7 +36,7 @@ export function Routes() {
                 }}
             />
             <Tab.Screen
-                name="Mecânica IA"
+                name="Mecanica"
                 component={Mecanico}
                 options={{
                     tabBarShowLabel: false,
@@ -50,7 +50,7 @@ export function Routes() {
                 }}
             />
             <Tab.Screen
-                name="Gerador de Música"
+                name="Musica"
                 component={Musica}
                 options={{
                     tabBarShowLabel: false,

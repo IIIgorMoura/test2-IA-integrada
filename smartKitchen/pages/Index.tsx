@@ -4,14 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons/';
 import ESTILOS from '../styles';
 
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-// import { Mecanico } from './mecanico';
-// import { Musica } from './musica';
-// import { RecomendacaoEstudos }  from './recomendacaoEstudos';
-// import { Traducao } from './traducao';
-
 const alturaTela = Dimensions.get('window').height;
 
 export function Home() {

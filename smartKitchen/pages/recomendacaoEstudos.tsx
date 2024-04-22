@@ -1,11 +1,9 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Dimensions, StatusBar, ScrollView, ActivityIndicator, Alert, Keyboard } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Dimensions, StatusBar, ScrollView, ActivityIndicator, Alert, Keyboard } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState } from 'react';
 
 import ESTILOS from '../styles';
 
-
-const alturaStatusBar = StatusBar.currentHeight;
 const alturaTela = Dimensions.get('window').height;
 
 const KEY_GPT = 'SUA_CHAVE';

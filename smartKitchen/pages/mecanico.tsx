@@ -1,11 +1,9 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Dimensions, StatusBar, ScrollView, ActivityIndicator, Alert, Keyboard } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Dimensions, StatusBar, ScrollView, ActivityIndicator, Alert, Keyboard } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState } from 'react'
 
 import ESTILOS from '../styles';
 
-
-const alturaStatusBar = StatusBar.currentHeight;
 const alturaTela = Dimensions.get('window').height;
 
 const KEY_GPT = 'SUA_CHAVE';
@@ -29,8 +27,6 @@ export function Mecanico() {
 
     const prompt = `Dê o diagnóstico de qual pode ser o problema ${problemaCarro}. No veículo ${carro}`;
 
-
-
     fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -50,7 +46,6 @@ export function Mecanico() {
         top_p: 1,
       })
     })
-
     .then(response => response.json())
     .then((data) => {
       console.log(data.choices[0].message.content);
@@ -110,4 +105,4 @@ export function Mecanico() {
   );
 };
 
-export default Mecanico
+export default Mecanico;
